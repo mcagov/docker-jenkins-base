@@ -47,13 +47,6 @@ pipeline {
                     }
                 }
             steps {
-                script {
-                                // get the build user
-                                wrap([$class: 'BuildUser']) {
-                                    env.BUILDER = sh (script:'[[ -z "${BUILD_USER}" ]] && echo -n "$(git show -s --pretty=%ae)" || echo -n "${BUILD_USER}"', returnStdout: true).trim()
-                                }
-                }
-
                 sh '''
                     docker build ${DOCKER_OPTS} -t "${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG}" .
                 '''
