@@ -1,14 +1,14 @@
 pipeline {
     agent {
         docker {
-            image '676563297163.dkr.ecr.eu-west-2.amazonaws.com/jenkins-docker-ci:latest'
+            image '009543623063.dkr.ecr.eu-west-2.amazonaws.com/jenkins-docker-ci:latest'
             alwaysPull true
             args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
 
     environment {
-        DOCKER_REGISTRY = '676563297163.dkr.ecr.eu-west-2.amazonaws.com'
+        DOCKER_REGISTRY = '009543623063.dkr.ecr.eu-west-2.amazonaws.com'
         DOCKER_IMAGE_NAME = "${env.JOB_NAME.split('/')[-2]?.replace('docker-', '')}"
         DOCKER_TAG = "${env.BRANCH_NAME == 'master' ? 'latest' : env.BRANCH_NAME}"
         DOCKER_OPTS = '--pull --compress --no-cache=true --force-rm=true --progress=plain '

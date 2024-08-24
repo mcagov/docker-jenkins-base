@@ -1,4 +1,4 @@
-FROM 676563297163.dkr.ecr.eu-west-2.amazonaws.com/jdk:corretto-21
+FROM 009543623063.dkr.ecr.eu-west-2.amazonaws.com/jdk:corretto-21
 
 # need to ensure jenkins has the same uid/gid as the ec2 version
 ARG docker_gid=1000
