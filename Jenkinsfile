@@ -3,8 +3,7 @@ pipeline {
 
     environment {
         DOCKER_REGISTRY = '009543623063.dkr.ecr.eu-west-2.amazonaws.com'
-        //DOCKER_IMAGE_NAME = "${env.JOB_NAME.split('/')[-2]?.replace('docker-', '')}"
-        DOCKER_IMAGE_NAME = "docker-jenkins-base"
+        DOCKER_IMAGE_NAME = "${env.JOB_NAME.split('/')[-2]?.replace('docker-', '')}"
         DOCKER_TAG = "${env.BRANCH_NAME == 'master' ? 'latest' : env.BRANCH_NAME}"
         DOCKER_OPTS = '--pull --compress --no-cache=true --force-rm=true --progress=plain '
         DOCKER_BUILDKIT = '1'
